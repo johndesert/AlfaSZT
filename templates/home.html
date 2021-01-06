@@ -6,7 +6,7 @@
 
 <ul>
 {% for post in object_list %}
-    <li><a href="{% url 'detailed-post' post.pk %}">{{post.title}}</a> <br/>
+    <li><a href="{% url 'detailed-post' post.pk %}">{{post.title}}</a>, <a href="{% url 'modify-post' post.pk %}"> edit </a> <br/>
     {{post.author}}
     {{post.time_created}}
     <br/>

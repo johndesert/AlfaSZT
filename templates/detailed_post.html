@@ -1,10 +1,9 @@
-{% extends 'base.html' %}
+{% extends 'create_post.html' %}
 {% block title %} alfa &raquo {{post.title}} {% endblock %}
 
 {% block content %}
-<h1> Detailed post </h1>
-    {{post.title}} <br/>
-    {{post.author}} on {{post.time_created}} <br/>
+<h1> {{post.title}} </h1>
+    <small>{{post.author}} on {{post.time_created}} <a href="{% url 'modify-post' post.pk %}"> edit </a></small> <br/><br/>
     {{post.body}}
 
 {% endblock %}

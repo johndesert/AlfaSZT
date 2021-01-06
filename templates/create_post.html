@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %} alfa &raquo create post {% endblock %}
+
+{% block content %}
+<h2>Creating Post</h2>
+
+<div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit" class="btn btn-primary"> POST ARTICLE </button>
+    </form>
+</div>
+
+{% endblock %}
