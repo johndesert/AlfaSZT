@@ -3,10 +3,13 @@
 
 {% block content %}
 <h1> {{post.title}} </h1>
+    {% if user.is_authenticated %}
     <small>{{post.author}} on {{post.time_created}} 
         <a href="{% url 'modify-post' post.pk %}"> edit, </a>
         <a href="{% url 'delete-post' post.pk %}"> delete </a>
-    </small> <br/><br/>
+    </small> 
+    {% endif %}
+    <br/><br/>
     {{post.body}}
 
 {% endblock %}
