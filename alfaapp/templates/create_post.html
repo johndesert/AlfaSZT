@@ -2,6 +2,7 @@
 {% block title %} alfa &raquo create post {% endblock %}
 
 {% block content %}
+{% if user.is_authenticated %}
 <h2>Creating Post</h2>
 
 <div class="form-group">
@@ -11,5 +12,8 @@
         <button type="submit" class="btn btn-primary"> POST ARTICLE </button>
     </form>
 </div>
-
+{% else %}
+Not permited
+{% endif %}
 {% endblock %}
+

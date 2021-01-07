@@ -2,6 +2,7 @@
 {% block title %} alfa &raquo modify post {% endblock %}
 
 {% block content %}
+{% if user.is_authenticated %}
 <h2>Delete Post:</h2>
 <p>
     Title: {{post.title}} <br/>
@@ -13,5 +14,7 @@
         <button type="submit" class="btn btn-primary"> DELETE ARTICLE </button>
     </form>
 </div>
-
+{% else %}
+Not permited
+{% endif %}
 {% endblock %}
