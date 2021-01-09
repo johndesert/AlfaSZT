@@ -27,3 +27,14 @@ class DeletePostViews(DeleteView):
     model = Post
     template_name = 'delete_post.html'
     success_url = reverse_lazy('home')
+
+def contact(request):
+    if request.method == "POST":
+        contact_user_email = request.POST['contact-user-email']
+        contact_user_phone = request.POST['contact-user-phone']
+        contact_user_name = request.POST['contact-user-name']
+        contact_user_message = request.POST['contact-user-message']
+        message_confirm = "we will contact you soon"
+        return render(request, 'contact.html', {'message_confirm': message_confirm, 'contact_user_name':contact_user_name})
+    else:
+        return render(request, 'contact.html')
