@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post
-from .forms import PostCreateForm, PostModifyForm
+from .models import Post, ContactMessage
+from .forms import PostCreateForm, PostModifyForm, ContactMessageForm
 from django.urls import reverse_lazy
 from rest_framework import viewsets
 from .serializers import PostSerializer
@@ -30,16 +30,10 @@ class DeletePostViews(DeleteView):
     template_name = 'delete_post.html'
     success_url = reverse_lazy('home')
 
-def contact(request):
-    if request.method == "POST":
-        contact_user_email = request.POST['contact-user-email']
-        contact_user_phone = request.POST['contact-user-phone']
-        contact_user_name = request.POST['contact-user-name']
-        contact_user_message = request.POST['contact-user-message']
-        message_confirm = "we will contact you soon"
-        return render(request, 'contact.html', {'message_confirm': message_confirm, 'contact_user_name':contact_user_name})
-    else:
-        return render(request, 'contact.html')
+class CreateMessageViews(CreateView):
+    model = ContactMessage
+    form_class = ContactMessageForm
+    template_name = 'contact.html'
 
 class SerPostView(viewsets.ModelViewSet):
     queryset = Post.objects.all()

@@ -17,3 +17,16 @@ class Post(models.Model):
     def get_absolute_url(self):
         #return reverse('detailed-post', args=(str(self.pk)))
         return reverse('home')
+
+class ContactMessage(models.Model):
+    name = models.CharField(max_length=30)
+    email = models.EmailField()
+    phone = models.IntegerField()
+    topic = models.CharField(max_length=1000)
+    message = models.CharField(max_length=1000)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('home')
