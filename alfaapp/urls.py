@@ -1,6 +1,7 @@
-from django.urls import path
+from django.urls import path, include
 
-from .views import BasicPageViews, DetailedViews, CreatePostViews, ModifyPostViews, DeletePostViews, contact
+from .views import BasicPageViews, DetailedViews, CreatePostViews, ModifyPostViews, DeletePostViews, contact, SerPostView
+
 
 urlpatterns = [
     path('', BasicPageViews.as_view(), name="home"),
@@ -9,4 +10,4 @@ urlpatterns = [
     path('post/modifypost/<int:pk>', ModifyPostViews.as_view(), name="modify-post"),
     path('post/<int:pk>/deletepost', DeletePostViews.as_view(), name="delete-post"),
     path('contact.html', contact, name="contact"),
-]
+    ]

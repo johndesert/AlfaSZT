@@ -12,7 +12,7 @@ class Post(models.Model):
     time_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.title + ' by ' + str(self.author)
+        return self.title
 
     def get_absolute_url(self):
         #return reverse('detailed-post', args=(str(self.pk)))

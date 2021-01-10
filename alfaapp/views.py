@@ -3,6 +3,8 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from .models import Post
 from .forms import PostCreateForm, PostModifyForm
 from django.urls import reverse_lazy
+from rest_framework import viewsets
+from .serializers import PostSerializer
 
 class BasicPageViews(ListView):
     model = Post
@@ -38,3 +40,7 @@ def contact(request):
         return render(request, 'contact.html', {'message_confirm': message_confirm, 'contact_user_name':contact_user_name})
     else:
         return render(request, 'contact.html')
+
+class SerPostView(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
