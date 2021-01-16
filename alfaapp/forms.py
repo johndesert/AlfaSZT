@@ -8,7 +8,7 @@ class PostCreateForm(forms.ModelForm):
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'author': forms.Select(attrs={'class': 'form-control'}),
+            'author': forms.TextInput(attrs={'class': 'form-control', 'value':'', 'id': 'uname', 'type': 'hidden'}),
             'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder' : "Write here the body of the post"}),
         }
 
