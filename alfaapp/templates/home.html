@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1> Alfa, life not just blog </h1>
+
+<ul>
+{% for post in object_list %}
+    <p>
+        <li><a href="{% url 'detailed-post' post.pk %}">{{post.title}}</a>, 
+            {% if user.is_authenticated %}
+                {% if user.id ==  post.author.id or user.username == 'Admin' %}
+                    <small> 
+                        <a href="{% url 'modify-post' post.pk %}"> edit, </a>
+                        <a href="{% url 'delete-post' post.pk %}"> delete </a> 
+                    </small> 
+                {% endif %}
+            {% endif %}
+            <br/>
+        <small>{{post.author}} on {{post.time_created}}</small>
+        <br/>
+        {{post.body | slice:"440"}}
+        </li>
+    </p>
+{% endfor %}
+</ul>
+
+{% endblock %}

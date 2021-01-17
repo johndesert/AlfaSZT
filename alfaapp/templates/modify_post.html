@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %} alfa &raquo modify post {% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        {% if user.id ==  post.author.id or user.username == 'Admin' %}
+            <h2>Modify Post</h2>
+
+            <div class="form-group">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p}}
+                    <button type="submit" class="btn btn-primary"> UPDATE ARTICLE </button>
+                </form>
+            </div>
+        {% else %}
+        Only owner of post or Admin can edit post
+        {% endif %}
+    {% else %}
+    Not permited
+    {% endif %}
+
+{% endblock %}

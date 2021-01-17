@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %} alfa &raquo modify post {% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    {% if user.id ==  post.author.id or user.username == 'Admin' %}
+
+        <h2>Delete Post:</h2>
+        <p>
+            Title: {{post.title}} <br/>
+            Created on: {{post.time_created}} <br/>
+        </p>
+        <div class="form-group">
+            <form method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary"> DELETE ARTICLE </button>
+            </form>
+        </div>
+    {% else %}
+        Only owner of post or Admin can delete post
+    {% endif %}
+{% else %}
+Not permited
+{% endif %}
+{% endblock %}

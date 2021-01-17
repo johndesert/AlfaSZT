@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block title %} alfa &raquo contact {% endblock %}
+
+{% block content %}
+
+<div id="main">
+    
+    <div class="container">
+        
+        <div class="row">
+            
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <p>
+                    <h3> Address</h3>
+                    <p> al. Niepodległości 555, Poznań 61-089, Poland</p>
+                    <h3> Phone</h3>
+                    <p> +48 555 555 555</p>
+                    <h3> Email</h3>
+                    <p> contact@najlepszzafirmainc.com</p>
+                </p> 
+
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+                <div class="col-12">
+                    <div class="iframe-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2433.683404018167!2d16.91738195165261!3d52.41241387969481!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47045b4a2676b4a1%3A0xb565d37ce4001baa!2zQWwuIE5pZXBvZGxlZ8WCb8WbY2ksIDYxLTcxMyBQb3puYcWE!5e0!3m2!1sen!2spl!4v1610214086677!5m2!1sen!2spl" height="300px" width="600px" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+            </div>
+            <div class="contact-form">
+                <div class="section-heading">
+                    
+                    <h2>Contact Form
+                    </h2>
+                </div>
+                <form action="{% url 'contact' %}" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="mt-2 col-lg-4 col-sm-6 col-md-6 col-xs-12"> 
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" name="name" placeholder="Name">
+                            </div>
+                            <div class="mt-2 col-lg-10">
+                                <input type="email" class="form-control" name="email" placeholder="Email">
+                            </div>
+                            <div class="mt-2 col-lg-10">
+                                <input type="phone" class="form-control" name="phone" placeholder="Phone">
+                            </div>
+                            <div class="mt-2 col-lg-10">
+                                <input type="phone" class="form-control" name="topic" placeholder="Topic">
+                            </div>
+                        </div>
+                        <div class="mt-2 col-lg-8 col-sm-6 col-md-6 col-xs-12">
+                            <div class="col-lg-10">
+                                <textarea name="message" class="form-control" placeholder="Message"></textarea>
+                            </div>
+                        </div>
+                        <div class="mt-4 col-12">
+                            <button type="submit" class="btn btn-primary"> Send message </button>
+                        </div>
+
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,17 @@
+{% extends 'create_post.html' %}
+{% block title %} alfa &raquo {{post.title}} {% endblock %}
+
+{% block content %}
+<h1> {{post.title}} </h1>
+    {% if user.is_authenticated %}
+    <small>{{post.author}} on {{post.time_created}} 
+        {% if user.id ==  post.author.id or user.username == 'Admin' %}
+            <a href="{% url 'modify-post' post.pk %}"> edit, </a>
+            <a href="{% url 'delete-post' post.pk %}"> delete </a>
+        {% endif %}
+    </small> 
+    {% endif %}
+    <br/><br/>
+    {{post.body}}
+
+{% endblock %}
